@@ -19,7 +19,7 @@
     .hint { font-size: 12px; color:#6b7280; }
   </style>
 
-  <!-- Firebase 초기화 (네가 만든 파일) -->
+  <!-- Firebase 초기화 -->
   <script type="module" src="./firebase-init.js"></script>
 </head>
 <body>
@@ -35,7 +35,10 @@
     </div>
     <button id="resetBtn" class="ghost" type="button">비밀번호 재설정 메일 보내기</button>
     <div id="msg" class="msg"></div>
-    <div class="hint">도메인이 허용되지 않았다면 Firebase 콘솔 → Authentication → Settings → Authorized domains에 <b>and-132.github.io</b>를 추가하세요.</div>
+    <div class="hint">
+      도메인이 허용되지 않았다면 Firebase 콘솔 → Authentication → Settings → Authorized domains에
+      <b>and-132.github.io</b>를 추가하세요.
+    </div>
   </form>
 
   <script type="module">
@@ -43,8 +46,10 @@
       signInWithEmailAndPassword,
       createUserWithEmailAndPassword,
       sendPasswordResetEmail,
-      onAuthStateChanged
+      onAuthStateChanged,
+      signOut
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import "./firebase-init.js";
 
     const form = document.getElementById('loginForm');
     const email = document.getElementById('email');
@@ -53,10 +58,11 @@
     const resetBtn = document.getElementById('resetBtn');
     const msg = document.getElementById('msg');
 
-    // 이미 로그인 상태면 돌아갈 곳으로 이동
+    // 로그인 후 이동할 페이지 (next 파라미터 or 기본 index.html)
     const params = new URLSearchParams(location.search);
     const next = params.get('next') || './index.html';
 
+    // 로그인 상태 감지
     onAuthStateChanged(window.auth, (user) => {
       if (user) {
         location.replace(next);
@@ -71,7 +77,7 @@
         await signInWithEmailAndPassword(window.auth, email.value.trim(), pw.value);
         msg.textContent = '로그인 성공! 이동합니다...';
         msg.className = 'msg ok';
-        location.replace(next);
+        setTimeout(() => location.replace(next), 800);
       } catch (err) {
         msg.textContent = prettyError(err);
         msg.className = 'msg';
@@ -85,7 +91,7 @@
         await createUserWithEmailAndPassword(window.auth, email.value.trim(), pw.value);
         msg.textContent = '회원가입 완료! 자동 로그인됩니다...';
         msg.className = 'msg ok';
-        location.replace(next);
+        setTimeout(() => location.replace(next), 800);
       } catch (err) {
         msg.textContent = prettyError(err);
         msg.className = 'msg';
@@ -105,6 +111,17 @@
       }
     });
 
+    // 선택: 로그아웃 버튼 있을 때만 작동
+    window.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('logoutBtn');
+      if (btn) {
+        btn.addEventListener('click', async () => {
+          await signOut(window.auth);
+          location.href = "./login.html";
+        });
+      }
+    });
+
     // 에러 메시지 정리
     function prettyError(err) {
       const code = (err && err.code) || '';
@@ -121,28 +138,8 @@
       }
     }
   </script>
-<script type="module">
-  import "./firebase-init.js";
-  import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-  onAuthStateChanged(window.auth, (user) => {
-    if (!user) {
-      const back = encodeURIComponent(location.pathname + location.search + location.hash);
-      location.href = `./login.html?next=${back}`;
-    }
-  });
-
-  // 선택: 로그아웃 버튼 연결 (id="logoutBtn"가 있을 때)
-  window.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('logoutBtn');
-    if (btn) {
-      btn.addEventListener('click', async () => {
-        await signOut(window.auth);
-        location.href = "./login.html";
-      });
-    }
-  });
-</script>
+</body>
+</html>
 
 </body>
 </html>

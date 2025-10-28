@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>132 | 메인</title>
-<button id="logoutBtn" style="position: fixed; top: 12px; right: 12px;">로그아웃</button>
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root{
@@ -22,19 +20,16 @@
     .logo-bar{background:var(--white);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:20}
     .logo{font-size:20px;font-weight:700;color:var(--nav)}
     .badge{background:var(--mint);color:#083a2e;font-weight:600;border-radius:999px;padding:4px 10px;font-size:12px}
-    /* nav */
     .nav{background:var(--nav)}
     .menu{max-width:1100px;margin:0 auto;display:flex;gap:6px;align-items:center;padding:0 12px;list-style:none}
     .menu>li{position:relative}
     .menu a{display:block;padding:14px 16px;color:#fff;text-decoration:none;font-weight:600}
     .menu a:hover{background:rgba(255,255,255,.08)}
-    /* dropdown */
     .has-sub>a::after{content:"▾";margin-left:6px;font-size:12px;opacity:.8}
     .submenu{display:none;position:absolute;top:100%;left:0;background:#ffffff;border:1px solid #e5e7eb;border-radius:12px;min-width:180px;box-shadow:0 10px 30px rgba(0,0,0,.08);overflow:hidden}
     .submenu a{color:#0f172a;padding:12px 14px}
     .submenu a:hover{background:#f3f4f6}
     .has-sub:hover .submenu{display:block}
-    /* hero */
     .hero{max-width:1100px;margin:28px auto;padding:20px}
     .hero-card{background:#ffffff;border:1px solid #e5e7eb;border-radius:16px;padding:28px;display:grid;gap:10px}
     .hero h1{margin:0;font-size:28px}
@@ -44,11 +39,9 @@
     .btn-primary{background:var(--mint);color:#064e3b}
     .btn-primary:hover{filter:brightness(.95)}
     .btn-ghost{border:1px solid #d1d5db;color:#111827;background:#fff}
-    /* slider (optional image placeholders) */
     .slider{position:relative;width:100%;max-width:1100px;height:380px;margin:16px auto;border-radius:16px;overflow:hidden;background:#000}
     .slide{position:absolute;inset:0;display:none;opacity:0;transition:opacity 1s;object-fit:cover;width:100%;height:100%}
     .slide.active{display:block;opacity:1}
-    /* footer */
     .footer{background:#0b1220;color:#e5e7eb;margin-top:32px}
     .footer-inner{max-width:1100px;margin:0 auto;padding:22px 16px;text-align:center;font-size:14px}
     .legal a{color:#cbd5e1;text-decoration:none}
@@ -80,7 +73,6 @@
           <a href="./오시는길.html">오시는 길</a>
         </div>
       </li>
-      <!-- 카테고리 늘어나면 여기 li 추가만 하면 됨 -->
     </ul>
   </nav>
 
@@ -96,12 +88,13 @@
   </section>
 
   <div class="slider">
-    <!-- 슬라이드 이미지는 리포지토리 루트에 slide1.jpg ~ slide4.jpg 넣으면 자동 표시 -->
     <img class="slide active" src="slide1.jpg" alt="슬라이드 1">
     <img class="slide" src="slide2.jpg" alt="슬라이드 2">
     <img class="slide" src="slide3.jpg" alt="슬라이드 3">
     <img class="slide" src="slide4.jpg" alt="슬라이드 4">
   </div>
+
+  <button id="logoutBtn" style="position: fixed; top: 12px; right: 12px;">로그아웃</button>
 
   <footer class="footer">
     <div class="footer-inner">
@@ -120,91 +113,30 @@
     function showSlide(i){ slides.forEach((s,idx)=>{ s.classList.toggle("active", idx===i); });}
     setInterval(()=>{ currentSlide=(currentSlide+1)%slides.length; showSlide(currentSlide); }, 3000);
   </script>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBFHz2dP8iucRWl7KHvyv6I2HlRqHLDjkw",
-    authDomain: "and-132-archive.firebaseapp.com",
-    projectId: "and-132-archive",
-    storageBucket: "and-132-archive.firebasestorage.app",
-    messagingSenderId: "650954051303",
-    appId: "1:650954051303:web:9ebe30987a0dbaf0451c42",
-    measurementId: "G-3FGZQB43Q2"
-  };
+  <!-- 접근 제어 + 로그아웃 -->
+  <script type="module">
+    import "./firebase-init.js";
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBFHz2dP8iucRWl7KHvyv6I2HlRqHLDjkw",
-  authDomain: "and-132-archive.firebaseapp.com",
-  projectId: "and-132-archive",
-  storageBucket: "and-132-archive.firebasestorage.app",
-  messagingSenderId: "650954051303",
-  appId: "1:650954051303:web:9ebe30987a0dbaf0451c42",
-  measurementId: "G-3FGZQB43Q2"
-};
-<script type="module">
-  import "./firebase-init.js";
-  import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    // 로그인 안 된 사람은 로그인 페이지로 이동
+    onAuthStateChanged(window.auth, (user) => {
+      if (!user) {
+        const back = encodeURIComponent(location.pathname + location.search + location.hash);
+        location.href = `./login.html?next=${back}`;
+      }
+    });
 
-  // 로그인 안 된 사람은 로그인 페이지로 보내기
-  onAuthStateChanged(window.auth, (user) => {
-    if (!user) {
-      const back = encodeURIComponent(location.pathname + location.search + location.hash);
-      location.href = `./login.html?next=${back}`;
-    }
-  });
-
-  // 로그아웃 버튼 동작
-  window.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('logoutBtn');
-    if (btn) {
-      btn.addEventListener('click', async () => {
-        await signOut(window.auth);
-        location.href = "./login.html";
-      });
-    }
-  });
-</script>
-<script type="module">
-  // 경로는 네가 firebase-init.js를 둔 위치에 맞춰 수정!
-  import "./firebase-init.js";
-  import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-  // 로그인 상태 확인 → 아니면 로그인 페이지로 보내기
-  onAuthStateChanged(window.auth, (user) => {
-    if (!user) {
-      const back = encodeURIComponent(location.pathname + location.search + location.hash);
-      location.href = `./login.html?next=${back}`;
-    } else {
-      // 선택: 로그인 이메일 표시
-      const el = document.getElementById("whoami");
-      if (el) el.textContent = user.email || "(알 수 없음)";
-    }
-  });
-
-  // 선택: 로그아웃 버튼 동작 (페이지에 버튼이 있을 때)
-  window.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('logoutBtn');
-    if (btn) {
-      btn.addEventListener('click', async () => {
-        await signOut(window.auth);
-        location.href = "./login.html";
-      });
-    }
-  });
-</script>
-
+    // 로그아웃 버튼
+    window.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("logoutBtn");
+      if (btn) {
+        btn.addEventListener("click", async () => {
+          await signOut(window.auth);
+          location.href = "./login.html";
+        });
+      }
+    });
+  </script>
 </body>
 </html>
-

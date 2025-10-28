@@ -1,11 +1,8 @@
+// firebase-init.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
-  getAuth,
-  setPersistence,
-  browserLocalPersistence
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-// ✅ Firebase 설정 (그대로 유지)
+// ↓ 여기에 네 Firebase 콘솔에서 복사한 설정을 넣어
 const firebaseConfig = {
   apiKey: "AIzaSyBFHz2dP8iucRWl7KHvyv6I2HlRqHLDjkw",
   authDomain: "and-132-archive.firebaseapp.com",
@@ -16,10 +13,7 @@ const firebaseConfig = {
   measurementId: "G-3FGZQB43Q2"
 };
 
-// ✅ Firebase 초기화
+// Firebase 초기화
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-await setPersistence(auth, browserLocalPersistence);
+window.auth = getAuth(app);
 
-// ✅ 전역 변수로 등록 (다른 페이지에서 window.auth로 접근)
-window.auth = auth;
