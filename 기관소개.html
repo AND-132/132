@@ -44,6 +44,68 @@
       <p>이미지나 표가 필요하면 이 카드 아래에 섹션을 더 추가해도 좋아요.</p>
     </div>
   </main>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBFHz2dP8iucRWl7KHvyv6I2HlRqHLDjkw",
+    authDomain: "and-132-archive.firebaseapp.com",
+    projectId: "and-132-archive",
+    storageBucket: "and-132-archive.firebasestorage.app",
+    messagingSenderId: "650954051303",
+    appId: "1:650954051303:web:9ebe30987a0dbaf0451c42",
+    measurementId: "G-3FGZQB43Q2"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBFHz2dP8iucRWl7KHvyv6I2HlRqHLDjkw",
+  authDomain: "and-132-archive.firebaseapp.com",
+  projectId: "and-132-archive",
+  storageBucket: "and-132-archive.firebasestorage.app",
+  messagingSenderId: "650954051303",
+  appId: "1:650954051303:web:9ebe30987a0dbaf0451c42",
+  measurementId: "G-3FGZQB43Q2"
+};
+<script type="module">
+  // 경로는 네가 firebase-init.js를 둔 위치에 맞춰 수정!
+  import "./firebase-init.js";
+  import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  // 로그인 상태 확인 → 아니면 로그인 페이지로 보내기
+  onAuthStateChanged(window.auth, (user) => {
+    if (!user) {
+      const back = encodeURIComponent(location.pathname + location.search + location.hash);
+      location.href = `./login.html?next=${back}`;
+    } else {
+      // 선택: 로그인 이메일 표시
+      const el = document.getElementById("whoami");
+      if (el) el.textContent = user.email || "(알 수 없음)";
+    }
+  });
+
+  // 선택: 로그아웃 버튼 동작 (페이지에 버튼이 있을 때)
+  window.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('logoutBtn');
+    if (btn) {
+      btn.addEventListener('click', async () => {
+        await signOut(window.auth);
+        location.href = "./login.html";
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
 

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>로그인 | 132</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; max-width: 420px; margin: 40px auto; padding: 0 16px; }
+    h1 { font-size: 22px; margin-bottom: 8px; }
+    p.sub { color:#6b7280; margin-top:0 }
+    form { display: grid; gap: 10px; margin-top: 16px; }
+    input { padding: 10px; font-size: 16px; border: 1px solid #ddd; border-radius: 10px; }
+    button { padding: 10px 14px; font-size: 16px; border: 0; border-radius: 12px; cursor: pointer; }
+    .primary { background: #10b981; color: #fff; }
+    .ghost { background: #f3f4f6; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .msg { margin-top: 10px; font-size: 14px; color: #ef4444; min-height: 1.2em; white-space: pre-line; }
+    .ok { color: #059669; }
+    .hint { font-size: 12px; color:#6b7280; }
+  </style>
+
+  <!-- Firebase 초기화 (네가 만든 파일) -->
+  <script type="module" src="./firebase-init.js"></script>
+</head>
+<body>
+  <h1>이메일 로그인</h1>
+  <p class="sub">한 번 가입하면 이후엔 같은 이메일/비번으로 로그인하면 돼요.</p>
+
+  <form id="loginForm">
+    <input id="email" type="email" placeholder="이메일" autocomplete="username" required />
+    <input id="pw" type="password" placeholder="비밀번호" autocomplete="current-password" required />
+    <div class="row">
+      <button type="submit" class="primary">로그인</button>
+      <button id="signupBtn" class="ghost" type="button">회원가입</button>
+    </div>
+    <button id="resetBtn" class="ghost" type="button">비밀번호 재설정 메일 보내기</button>
+    <div id="msg" class="msg"></div>
+    <div class="hint">도메인이 허용되지 않았다면 Firebase 콘솔 → Authentication → Settings → Authorized domains에 <b>and-132.github.io</b>를 추가하세요.</div>
+  </form>
+
+  <script type="module">
+    import {
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      sendPasswordResetEmail,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const form = document.getElementById('loginForm');
+    const email = document.getElementById('email');
+    const pw = document.getElementById('pw');
+    const signupBtn = document.getElementById('signupBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const msg = document.getElementById('msg');
+
+    // 이미 로그인 상태면 돌아갈 곳으로 이동
+    const params = new URLSearchParams(location.search);
+    const next = params.get('next') || './index.html';
+
+    onAuthStateChanged(window.auth, (user) => {
+      if (user) {
+        location.replace(next);
+      }
+    });
+
+    // 로그인
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = '';
+      try {
+        await signInWithEmailAndPassword(window.auth, email.value.trim(), pw.value);
+        msg.textContent = '로그인 성공! 이동합니다...';
+        msg.className = 'msg ok';
+        location.replace(next);
+      } catch (err) {
+        msg.textContent = prettyError(err);
+        msg.className = 'msg';
+      }
+    });
+
+    // 회원가입
+    signupBtn.addEventListener('click', async () => {
+      msg.textContent = '';
+      try {
+        await createUserWithEmailAndPassword(window.auth, email.value.trim(), pw.value);
+        msg.textContent = '회원가입 완료! 자동 로그인됩니다...';
+        msg.className = 'msg ok';
+        location.replace(next);
+      } catch (err) {
+        msg.textContent = prettyError(err);
+        msg.className = 'msg';
+      }
+    });
+
+    // 비밀번호 재설정
+    resetBtn.addEventListener('click', async () => {
+      msg.textContent = '';
+      try {
+        await sendPasswordResetEmail(window.auth, email.value.trim());
+        msg.textContent = '재설정 메일을 보냈습니다. 메일함을 확인하세요.';
+        msg.className = 'msg ok';
+      } catch (err) {
+        msg.textContent = prettyError(err);
+        msg.className = 'msg';
+      }
+    });
+
+    // 에러 메시지 정리
+    function prettyError(err) {
+      const code = (err && err.code) || '';
+      switch (code) {
+        case 'auth/invalid-email': return '이메일 형식이 올바르지 않습니다.';
+        case 'auth/missing-password': return '비밀번호를 입력하세요.';
+        case 'auth/weak-password': return '비밀번호가 너무 약합니다 (6자 이상).';
+        case 'auth/email-already-in-use': return '이미 가입된 이메일입니다. 로그인 해주세요.';
+        case 'auth/user-not-found': return '가입되지 않은 이메일입니다.';
+        case 'auth/wrong-password': return '비밀번호가 일치하지 않습니다.';
+        case 'auth/network-request-failed': return '네트워크 오류입니다. 다시 시도해주세요.';
+        case 'auth/too-many-requests': return '잠시 후 다시 시도해주세요 (요청 과다).';
+        default: return (err && err.message) ? err.message : '오류가 발생했습니다.';
+      }
+    }
+  </script>
+<script type="module">
+  import "./firebase-init.js";
+  import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  onAuthStateChanged(window.auth, (user) => {
+    if (!user) {
+      const back = encodeURIComponent(location.pathname + location.search + location.hash);
+      location.href = `./login.html?next=${back}`;
+    }
+  });
+
+  // 선택: 로그아웃 버튼 연결 (id="logoutBtn"가 있을 때)
+  window.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('logoutBtn');
+    if (btn) {
+      btn.addEventListener('click', async () => {
+        await signOut(window.auth);
+        location.href = "./login.html";
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
