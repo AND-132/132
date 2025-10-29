@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>행정서류</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>행정서류 제목</h1>
+        <p>서류에 대한 설명 또는 부가적인 정보</p>
+    </header>
+
+    <section>
+        <h2>서류 내용</h2>
+        <p>서류의 주요 내용을 작성합니다. 예를 들어, 신청 내용, 조건, 필수 제출 서류 등을 포함할 수 있습니다.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th>설명</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>예시 항목 1</td>
+                    <td>예시 설명 1</td>
+                </tr>
+                <tr>
+                    <td>예시 항목 2</td>
+                    <td>예시 설명 2</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>서명란</h2>
+        <form action="submit_form.php" method="post">
+            <label for="name">성명:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="signature">서명:</label>
+            <input type="text" id="signature" name="signature" required><br><br>
+            <button type="submit">서명 완료</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 기관명</p>
+    </footer>
+</body>
+</html>
