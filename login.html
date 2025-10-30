@@ -106,8 +106,20 @@
       box-shadow: 0 0 8px rgba(255, 200, 221, 0.4);
     }
 
+    /* 🌸 버튼 컨테이너 중앙정렬 */
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .button-container button {
+      width: 45%;
+    }
+
     button {
-      width: 100%;
       padding: 12px;
       border: none;
       background: var(--mint);
@@ -115,7 +127,6 @@
       font-size: 16px;
       font-weight: bold;
       border-radius: 10px;
-      margin-top: 8px;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -176,8 +187,11 @@
       <input type="email" id="email" placeholder="이메일 입력" />
       <input type="password" id="password" placeholder="비밀번호 입력" />
 
-      <button id="loginBtn">로그인</button>
-      <button id="signupBtn">회원가입</button>
+      <!-- 🌸 가운데 정렬된 버튼 2개 -->
+      <div class="button-container">
+        <button id="loginBtn">로그인</button>
+        <button id="signupBtn">회원가입</button>
+      </div>
 
       <div class="divider">or</div>
 
@@ -188,9 +202,9 @@
       © 2025 Sanghee’s Archive. All rights reserved.
     </footer>
   </div>
-<script type="module" src="firebase-init.js"></script>
-<script type="module" src="auth.js"></script>
-</body>
 
+  <!-- Firebase Scripts -->
+  <script type="module" src="firebase-init.js"></script>
+  <script type="module" src="auth.js"></script>
 </body>
 </html>

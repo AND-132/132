@@ -40,10 +40,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    .logo {
-      font-size: 20px;
-    }
-
+    .logo { font-size: 20px; }
     .badge {
       font-size: 14px;
       background: white;
@@ -57,7 +54,6 @@
       text-align: center;
       margin: 20px 0;
     }
-
     nav a {
       text-decoration: none;
       color: var(--mint);
@@ -69,7 +65,6 @@
       font-weight: bold;
       transition: 0.3s;
     }
-
     nav a:hover {
       background: var(--mint);
       color: white;
@@ -110,10 +105,7 @@
       box-shadow: 0 6px 12px rgba(255, 200, 221, 0.3);
     }
 
-    .section h3 {
-      color: var(--mint);
-      margin-top: 0;
-    }
+    .section h3 { color: var(--mint); margin-top: 0; }
 
     footer {
       text-align: center;
@@ -124,9 +116,9 @@
       background: #fff;
       border-radius: 0 0 25px 25px;
     }
-
   </style>
 </head>
+
 <body>
   <div class="container">
     <header class="logo-bar">
@@ -134,16 +126,34 @@
       <span class="badge">mint mood ✧˖°</span>
     </header>
 
+    <!-- 🌸 로그인 상태 확인 & 접근 차단 -->
+    <script type="module">
+      import { app } from "./firebase-init.js";
+      import { getAuth, onAuthStateChanged } 
+      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+      const auth = getAuth(app);
+
+      onAuthStateChanged(auth, (user) => {
+        if (!user) {
+          alert("로그인이 필요합니다 💌");
+          window.location.href = "login.html";
+        } else {
+          console.log("✅ 로그인 상태 유지 중:", user.email);
+        }
+      });
+    </script>
+
     <nav>
       <a href="index.html">HOME</a>
       <a href="INFO.html">INFO</a>
       <a href="MAP.html">MAP</a>
-      <a href="login.html">LOGIN</a>
+      <a href="login.html">LOGOUT</a>
     </nav>
 
     <main>
       <h1>💚 MAIN ARCHIVE 💚</h1>
-      <p>여기서는 32’s Arch1ve의 주요 콘텐츠와 기록을 한눈에 볼 수 있어요 🌷</p>
+      <p>로그인 후에만 접근 가능한 주요 기록 페이지입니다 🌷</p>
 
       <div class="section">
         <h3>📚 업무 및 프로젝트</h3>
@@ -160,7 +170,7 @@
       <div class="section">
         <h3>🌸 업데이트 로그</h3>
         <p>· 2025.10.30 – 민트+핑크 테마 리뉴얼<br/>
-        · 2025.10.31 – MAIN 페이지 추가 및 폭 조정<br/>
+        · 2025.10.31 – MAIN 페이지 로그인 체크 추가<br/>
         · 앞으로도 꾸준히 기록이 추가될 예정입니다 ✨</p>
       </div>
     </main>
