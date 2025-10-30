@@ -99,6 +99,7 @@
       border-radius: 10px;
       outline: none;
       transition: 0.3s;
+      text-align: center; /* 🌸 입력 텍스트 중앙 정렬 */
     }
 
     input:focus {
@@ -106,7 +107,7 @@
       box-shadow: 0 0 8px rgba(255, 200, 221, 0.4);
     }
 
-    /* 🌸 버튼 컨테이너 중앙정렬 + 폭 확장 */
+    /* 🌸 버튼 영역 통합 */
     .button-container {
       display: flex;
       flex-direction: column;
@@ -116,12 +117,9 @@
       width: 100%;
     }
 
-    .button-container button {
+    button {
       width: 100%;
       max-width: 400px;
-    }
-
-    button {
       padding: 12px;
       border: none;
       background: var(--mint);
@@ -129,6 +127,7 @@
       font-size: 16px;
       font-weight: bold;
       border-radius: 10px;
+      text-align: center;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -136,6 +135,10 @@
     button:hover {
       background: var(--pink);
       box-shadow: 0 0 10px rgba(123,224,181,0.4);
+    }
+
+    #logoutBtn {
+      background: var(--pink);
     }
 
     .divider {
@@ -189,7 +192,6 @@
       <input type="email" id="email" placeholder="이메일 입력" />
       <input type="password" id="password" placeholder="비밀번호 입력" />
 
-      <!-- 🌸 가운데 정렬된 버튼 (폭 넓게 수정됨) -->
       <div class="button-container">
         <button id="loginBtn">로그인</button>
         <button id="signupBtn">회원가입</button>
@@ -197,7 +199,9 @@
 
       <div class="divider">or</div>
 
-      <button id="logoutBtn" style="background:#FFC8DD;">로그아웃</button>
+      <div class="button-container">
+        <button id="logoutBtn">로그아웃</button>
+      </div>
     </main>
 
     <footer>
