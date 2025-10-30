@@ -2,74 +2,172 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>MAIN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🍃32's Arch1ve🌷 | Main</title>
   <style>
-    :root{--mint:#7BE0B5;--nav:#0A2740;--bg:#f7faf9;--text:#1a1a1a;--white:#fff}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,Apple SD Gothic Neo,Noto Sans KR,"Malgun Gothic",sans-serif;color:var(--text);background:var(--bg)}
-    .logo-bar{background:var(--white);display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:20}
-    .logo{font-size:20px;font-weight:700;color:#0A2740}
-    .nav{background:#0A2740}
-    .menu{max-width:1100px;margin:0 auto;display:flex;gap:6px;align-items:center;padding:0 12px;list-style:none}
-    .menu a{display:block;padding:14px 16px;color:#fff;text-decoration:none;font-weight:600}
-    .menu a:hover{background:rgba(255,255,255,.08)}
-    .container{max-width:1100px;margin:28px auto;padding:0 16px}
-    .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:24px}
-    h1{margin:0 0 12px}
-    p{margin:0 0 8px}
-    .back{display:inline-block;margin-top:14px;background:var(--mint);padding:10px 14px;border-radius:10px;text-decoration:none;color:#064e3b;font-weight:700}
-    #logoutBtn{position:fixed;top:12px;right:12px;padding:8px 12px;border:0;border-radius:8px;background:#7BE0B5;color:#064e3b;font-weight:600;cursor:pointer}
+    :root {
+      --mint: #7BE0B5;
+      --pink: #FFC8DD;
+      --bg: #f8fffc;
+      --text: #2e2e2e;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(180deg, #f8fffc 0%, #fffafc 100%);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 30px auto;
+      background: #ffffffcc;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(255, 200, 221, 0.3);
+      overflow: hidden;
+    }
+
+    header.logo-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      background: var(--mint);
+      color: white;
+      font-weight: bold;
+      border-bottom: 3px solid var(--pink);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-size: 20px;
+    }
+
+    .badge {
+      font-size: 14px;
+      background: white;
+      color: var(--mint);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    nav {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--mint);
+      background: white;
+      border: 2px solid var(--mint);
+      padding: 10px 18px;
+      margin: 5px;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background: var(--mint);
+      color: white;
+      box-shadow: 0 0 10px var(--pink);
+    }
+
+    main {
+      padding: 40px 20px 60px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--mint);
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: var(--pink);
+      margin-top: 40px;
+      font-size: 20px;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 18px;
+      padding: 25px;
+      margin-top: 20px;
+      box-shadow: 0 3px 8px rgba(123, 224, 181, 0.25);
+      text-align: left;
+    }
+
+    .section:hover {
+      transform: scale(1.01);
+      transition: 0.3s;
+      box-shadow: 0 6px 12px rgba(255, 200, 221, 0.3);
+    }
+
+    .section h3 {
+      color: var(--mint);
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #999;
+      border-top: 1px solid #eee;
+      background: #fff;
+      border-radius: 0 0 25px 25px;
+    }
+
   </style>
 </head>
 <body>
-  <header class="logo-bar">
-  <div class="logo">🍃32's Arch1ve🌷</div>
-  <span class="badge">mint mood ✧˖°</span>
-</header>
+  <div class="container">
+    <header class="logo-bar">
+      <div class="logo">🍃32's Arch1ve🌷</div>
+      <span class="badge">mint mood ✧˖°</span>
+    </header>
 
-  <nav class="nav">
-    <ul class="menu">
-      <li><a href="./index.html">HELLO</a></li>
-      <li><a href="./MAIN.html">MAIN</a></li>
-      <li><a href="./운영규정.html">운영규정</a></li>
-      <li><a href="./INFO.html">INFO</a></li>
-      <li><a href="./MAP.html">MAP</a></li>
-    </ul>
-  </nav>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="INFO.html">INFO</a>
+      <a href="MAP.html">MAP</a>
+      <a href="login.html">LOGIN</a>
+    </nav>
 
-  <main class="container">
-    <div class="card">
-      <h1>기관소개</h1>
-      <p>여기는 기관소개 페이지입니다. 소개 문구, 연혁, 강사진, 인증/수상 내역 등을 자유롭게 채워주세요.</p>
-      <p>이미지나 표가 필요하면 이 카드 아래에 섹션을 더 추가해도 좋아요.</p>
-    </div>
-  </main>
+    <main>
+      <h1>💚 MAIN ARCHIVE 💚</h1>
+      <p>여기서는 32’s Arch1ve의 주요 콘텐츠와 기록을 한눈에 볼 수 있어요 🌷</p>
 
-  <button id="logoutBtn">로그아웃</button>
+      <div class="section">
+        <h3>📚 업무 및 프로젝트</h3>
+        <p>국비훈련 행정, 인증평가, 취업률 관리 등 실무 중심의 자료를 정리한 섹션입니다.<br/>
+        서류 양식, 프로세스, 보고서 등은 별도 아카이브 페이지에서 확인 가능해요.</p>
+      </div>
 
-  <!-- 접근제어 코드 -->
-  <script type="module">
-    import "./firebase-init.js";
-    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+      <div class="section">
+        <h3>🗂 개인 아카이브</h3>
+        <p>일상적인 기록, 메모, 혹은 창의적인 아이디어를 보관하는 공간이에요.<br/>
+        감정, 경험, 그리고 성장의 흔적을 남겨보세요 💭</p>
+      </div>
 
-    // 로그인 확인
-    onAuthStateChanged(window.auth, (user) => {
-      if (!user) {
-        const back = encodeURIComponent(location.pathname + location.search + location.hash);
-        location.href = `./login.html?next=${back}`;
-      }
-    });
+      <div class="section">
+        <h3>🌸 업데이트 로그</h3>
+        <p>· 2025.10.30 – 민트+핑크 테마 리뉴얼<br/>
+        · 2025.10.31 – MAIN 페이지 추가 및 폭 조정<br/>
+        · 앞으로도 꾸준히 기록이 추가될 예정입니다 ✨</p>
+      </div>
+    </main>
 
-    // 로그아웃 버튼
-    window.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("logoutBtn");
-      if (btn) {
-        btn.addEventListener("click", async () => {
-          await signOut(window.auth);
-          location.href = "./login.html";
-        });
-      }
-    });
-  </script>
+    <footer>
+      © 2025 Sanghee’s Archive. All rights reserved.
+    </footer>
+  </div>
 </body>
 </html>
