@@ -2,160 +2,120 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>132 | 메인</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🍃32's Arch1ve🌷 | Index</title>
   <style>
-    :root{
-      --mint:#7BE0B5;
-      --mint-dark:#0A6B5A;
-      --nav:#0A2740;
-      --bg:#f7faf9;
-      --text:#1a1a1a;
-      --muted:#6b7280;
-      --white:#fff;
+    :root {
+      --mint: #7BE0B5;
+      --pink: #FFC8DD;
+      --bg: #f8fffc;
+      --text: #2e2e2e;
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,Apple SD Gothic Neo,Noto Sans KR,"Malgun Gothic",sans-serif;color:var(--text);background:var(--bg)}
-    .top-bar{background:var(--nav);color:#fff;padding:8px 16px;font-size:14px;text-align:right}
-    .logo-bar{background:var(--white);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:20}
-    .logo{font-size:20px;font-weight:700;color:var(--nav)}
-    .badge{background:var(--mint);color:#083a2e;font-weight:600;border-radius:999px;padding:4px 10px;font-size:12px}
-    .nav{background:var(--nav)}
-    .menu{max-width:1100px;margin:0 auto;display:flex;gap:6px;align-items:center;padding:0 12px;list-style:none}
-    .menu>li{position:relative}
-    .menu a{display:block;padding:14px 16px;color:#fff;text-decoration:none;font-weight:600}
-    .menu a:hover{background:rgba(255,255,255,.08)}
-    .has-sub>a::after{content:"▾";margin-left:6px;font-size:12px;opacity:.8}
-    .submenu{display:none;position:absolute;top:100%;left:0;background:#ffffff;border:1px solid #e5e7eb;border-radius:12px;min-width:180px;box-shadow:0 10px 30px rgba(0,0,0,.08);overflow:hidden}
-    .submenu a{color:#0f172a;padding:12px 14px}
-    .submenu a:hover{background:#f3f4f6}
-    .has-sub:hover .submenu{display:block}
-    .hero{max-width:1100px;margin:28px auto;padding:20px}
-    .hero-card{background:#ffffff;border:1px solid #e5e7eb;border-radius:16px;padding:28px;display:grid;gap:10px}
-    .hero h1{margin:0;font-size:28px}
-    .hero p{margin:0;color:var(--muted)}
-    .cta{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700}
-    .btn-primary{background:var(--mint);color:#064e3b}
-    .btn-primary:hover{filter:brightness(.95)}
-    .btn-ghost{border:1px solid #d1d5db;color:#111827;background:#fff}
-    .slider{position:relative;width:100%;max-width:1100px;height:380px;margin:16px auto;border-radius:16px;overflow:hidden;background:#000}
-    .slide{position:absolute;inset:0;display:none;opacity:0;transition:opacity 1s;object-fit:cover;width:100%;height:100%}
-    .slide.active{display:block;opacity:1}
-    .footer{background:#0b1220;color:#e5e7eb;margin-top:32px}
-    .footer-inner{max-width:1100px;margin:0 auto;padding:22px 16px;text-align:center;font-size:14px}
-    .legal a{color:#cbd5e1;text-decoration:none}
-    .legal a:hover{text-decoration:underline}
-    #logoutBtn {
-      position: fixed;
-      top: 12px;
-      right: 12px;
-      padding: 8px 14px;
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(180deg, #f8fffc 0%, #fffafc 100%);
+      color: var(--text);
+    }
+
+    header.logo-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
       background: var(--mint);
-      color: #064e3b;
-      border: none;
-      border-radius: 10px;
-      font-weight: 700;
-      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      border-bottom: 3px solid var(--pink);
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: all 0.2s ease;
-      z-index: 30;
     }
-    #logoutBtn:hover {
-      background: #6ad2a5;
-      transform: translateY(-1px);
+
+    .logo {
+      font-size: 20px;
     }
-    @media (max-width:720px){
-      .menu{overflow-x:auto}
-      .hero h1{font-size:22px}
-      .slider{height:240px}
+
+    .badge {
+      font-size: 14px;
+      background: white;
+      color: var(--mint);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 500;
     }
+
+    nav {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--mint);
+      background: white;
+      border: 2px solid var(--mint);
+      padding: 10px 18px;
+      margin: 5px;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background: var(--mint);
+      color: white;
+      box-shadow: 0 0 10px var(--pink);
+    }
+
+    main {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 26px;
+      color: var(--mint);
+    }
+
+    p {
+      color: #555;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #999;
+    }
+
   </style>
 </head>
 <body>
-  <div class="top-bar">문의전화 ☎ 031-305-3137</div>
-
   <header class="logo-bar">
-    <div class="logo">🌼올댓뷰티아카데미학원(수원)🐟</div>
-    <span class="badge">Mint Theme</span>
+    <div class="logo">🍃32's Arch1ve🌷</div>
+    <span class="badge">mint mood ✧˖°</span>
   </header>
 
-  <nav class="nav">
-    <ul class="menu">
-      <li><a href="./index.html">메인</a></li>
-      <li class="has-sub">
-        <a href="#">국비지원</a>
-        <div class="submenu">
-          <a href="./기관소개.html">기관소개</a>
-          <a href="./운영규정.html">운영규정</a>
-          <a href="./시설안내.html">시설안내</a>
-          <a href="./오시는길.html">오시는 길</a>
-        </div>
-      </li>
-    </ul>
+  <nav>
+    <a href="MAIN.html">MAIN</a>
+    <a href="INFO.html">INFO</a>
+    <a href="MAP.html">MAP</a>
+    <a href="login.html">LOGIN</a>
   </nav>
 
-  <section class="hero">
-    <div class="hero-card">
-      <h1>국비지원 & 과정 안내</h1>
-      <p>민트 톤의 깔끔한 테마. 이 영역에 메인 카피/배너 문구를 넣으세요.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="./기관소개.html">기관소개 보기</a>
-        <a class="btn btn-ghost" href="./오시는길.html">오시는 길</a>
-      </div>
-    </div>
-  </section>
+  <main>
+    <h1>🌷 Welcome to 32’s Arch1ve 🍃</h1>
+    <p>
+      여기는 박상희의 민트 아카이브 공간이에요.<br/>
+      업무, 기록, 그리고 작은 일상들을 정리해두는 개인 페이지입니다.<br/>
+      귀엽고 따뜻한 마음으로 하나씩 채워나갈 예정이에요 💚
+    </p>
+  </main>
 
-  <div class="slider">
-    <img class="slide active" src="slide1.jpg" alt="슬라이드 1">
-    <img class="slide" src="slide2.jpg" alt="슬라이드 2">
-    <img class="slide" src="slide3.jpg" alt="슬라이드 3">
-    <img class="slide" src="slide4.jpg" alt="슬라이드 4">
-  </div>
-
-  <button id="logoutBtn">로그아웃</button>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      경기도 수원시 팔달구 효원로 288 대원콤비프라자 10층 1002호 일부 · 대표번호: 031-305-0855 · 영업시간: 09:00~22:00<br/>
-      COPYRIGHT 2025 132 ALL RIGHT RESERVED.
-      <div class="legal" style="margin-top:8px">
-        <a href="#">이용규정</a> · <a href="#">개인정보처리방침</a>
-      </div>
-    </div>
+  <footer>
+    © 2025 Sanghee’s Archive. All rights reserved.
   </footer>
-
-  <script>
-    // 간단한 슬라이더
-    let currentSlide = 0;
-    const slides = document.querySelectorAll(".slide");
-    function showSlide(i){ slides.forEach((s,idx)=>{ s.classList.toggle("active", idx===i); });}
-    setInterval(()=>{ currentSlide=(currentSlide+1)%slides.length; showSlide(currentSlide); }, 3000);
-  </script>
-
-  <!-- Firebase 접근제어 -->
-  <script type="module">
-    import "./firebase-init.js";
-    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-    // 로그인 안 된 사람은 로그인 페이지로 이동
-    onAuthStateChanged(window.auth, (user) => {
-      if (!user) {
-        const back = encodeURIComponent(location.pathname + location.search + location.hash);
-        location.href = `./login.html?next=${back}`;
-      }
-    });
-
-    // 로그아웃 버튼
-    window.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("logoutBtn");
-      if (btn) {
-        btn.addEventListener("click", async () => {
-          await signOut(window.auth);
-          location.href = "./login.html";
-        });
-      }
-    });
-  </script>
 </body>
 </html>

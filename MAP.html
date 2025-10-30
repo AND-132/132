@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>시설안내</title>
+  <title>오시는 길</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root{--mint:#7BE0B5;--nav:#0A2740;--bg:#f7faf9;--text:#1a1a1a;--white:#fff}
@@ -14,19 +14,18 @@
     .menu a{display:block;padding:14px 16px;color:#fff;text-decoration:none;font-weight:600}
     .menu a:hover{background:rgba(255,255,255,.08)}
     .container{max-width:1100px;margin:28px auto;padding:0 16px}
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
-    .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden}
-    .card img{width:100%;height:160px;object-fit:cover;background:#ddd}
-    .card .content{padding:14px}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:24px}
     h1{margin:0 0 12px}
-    #logoutBtn{position:fixed;top:12px;right:12px;padding:8px 12px;border:0;border-radius:8px;background:#7BE0B5;color:#064e3b;font-weight:600;cursor:pointer}
+    p{margin:0 0 8px}
+    .map{margin-top:12px;border-radius:12px;overflow:hidden;border:1px solid #e5e7eb}
+    iframe{width:100%;height:380px;border:0}
   </style>
 </head>
 <body>
   <header class="logo-bar">
-    <div class="logo">🌼올댓뷰티아카데미학원(수원)🐟</div>
-    <a href="./index.html" style="text-decoration:none;font-weight:700;color:#064e3b;background:#7BE0B5;padding:10px 14px;border-radius:10px">메인으로</a>
-  </header>
+  <div class="logo">🍃32's Arch1ve🌷</div>
+  <span class="badge">mint mood ✧˖°</span>
+</header>
 
   <nav class="nav">
     <ul class="menu">
@@ -39,39 +38,34 @@
   </nav>
 
   <main class="container">
-    <h1>시설안내</h1>
-    <div class="grid">
-      <div class="card">
-        <img src="room1.jpg" alt="실습실 1">
-        <div class="content">실습실 1 (네일/메이크업)</div>
-      </div>
-      <div class="card">
-        <img src="room2.jpg" alt="실습실 2">
-        <div class="content">실습실 2 (에스테틱)</div>
-      </div>
-      <div class="card">
-        <img src="room3.jpg" alt="강의실">
-        <div class="content">강의실 / 이론 수업 공간</div>
+    <div class="card">
+      <h1>오시는 길</h1>
+      <p>경기도 수원시 팔달구 효원로 288 대원콤비프라자 10층 1002호 일부</p>
+      <div class="map">
+        <iframe
+          src="https://maps.google.com/maps?q=%EC%88%98%EC%9B%90%EC%8B%9C%20%ED%8C%94%EB%8B%AC%EA%B5%AC%20%ED%9A%A8%EC%9B%90%EB%A1%9C%20288&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          loading="lazy"></iframe>
       </div>
     </div>
   </main>
 
-  <button id="logoutBtn">로그아웃</button>
-
-  <!-- 접근 제어 스크립트 -->
+  <!-- 접근 제어 + 로그아웃 -->
   <script type="module">
     import "./firebase-init.js";
     import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-    // 로그인 상태 확인
+    // 로그인 안 되어 있으면 로그인 페이지로 이동
     onAuthStateChanged(window.auth, (user) => {
       if (!user) {
         const back = encodeURIComponent(location.pathname + location.search + location.hash);
         location.href = `./login.html?next=${back}`;
+      } else {
+        const el = document.getElementById("whoami");
+        if (el) el.textContent = user.email || "(알 수 없음)";
       }
     });
 
-    // 로그아웃 버튼
+    // 로그아웃 버튼 (선택사항)
     window.addEventListener("DOMContentLoaded", () => {
       const btn = document.getElementById("logoutBtn");
       if (btn) {
