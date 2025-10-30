@@ -2,85 +2,186 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>시설안내</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🍃32's Arch1ve🌷 | Info</title>
   <style>
-    :root{--mint:#7BE0B5;--nav:#0A2740;--bg:#f7faf9;--text:#1a1a1a;--white:#fff}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,Apple SD Gothic Neo,Noto Sans KR,"Malgun Gothic",sans-serif;color:var(--text);background:var(--bg)}
-    .logo-bar{background:var(--white);display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:20}
-    .logo{font-size:20px;font-weight:700;color:#0A2740}
-    .nav{background:#0A2740}
-    .menu{max-width:1100px;margin:0 auto;display:flex;gap:6px;align-items:center;padding:0 12px;list-style:none}
-    .menu a{display:block;padding:14px 16px;color:#fff;text-decoration:none;font-weight:600}
-    .menu a:hover{background:rgba(255,255,255,.08)}
-    .container{max-width:1100px;margin:28px auto;padding:0 16px}
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
-    .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden}
-    .card img{width:100%;height:160px;object-fit:cover;background:#ddd}
-    .card .content{padding:14px}
-    h1{margin:0 0 12px}
-    #logoutBtn{position:fixed;top:12px;right:12px;padding:8px 12px;border:0;border-radius:8px;background:#7BE0B5;color:#064e3b;font-weight:600;cursor:pointer}
+    :root {
+      --mint: #7BE0B5;
+      --pink: #FFC8DD;
+      --bg: #f8fffc;
+      --text: #2e2e2e;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(180deg, #f8fffc 0%, #fffafc 100%);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 30px auto;
+      background: #ffffffcc;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(255, 200, 221, 0.3);
+      overflow: hidden;
+    }
+
+    header.logo-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      background: var(--mint);
+      color: white;
+      font-weight: bold;
+      border-bottom: 3px solid var(--pink);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .logo { font-size: 20px; }
+    .badge {
+      font-size: 14px;
+      background: white;
+      color: var(--mint);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    nav {
+      text-align: center;
+      margin: 20px 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--mint);
+      background: white;
+      border: 2px solid var(--mint);
+      padding: 10px 18px;
+      margin: 5px;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      background: var(--mint);
+      color: white;
+      box-shadow: 0 0 10px var(--pink);
+    }
+
+    main {
+      padding: 40px 20px 60px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--mint);
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      color: var(--pink);
+      font-size: 20px;
+      margin-top: 40px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 25px;
+      margin-top: 25px;
+      box-shadow: 0 3px 8px rgba(123, 224, 181, 0.25);
+      text-align: left;
+    }
+
+    .card:hover {
+      transform: scale(1.01);
+      transition: 0.3s;
+      box-shadow: 0 6px 12px rgba(255, 200, 221, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #999;
+      border-top: 1px solid #eee;
+      background: #fff;
+      border-radius: 0 0 25px 25px;
+    }
+
   </style>
 </head>
 <body>
-<header class="logo-bar">
-  <div class="logo">🍃32's Arch1ve🌷</div>
-  <span class="badge">mint mood ✧˖°</span>
-</header>
+  <div class="container">
+    <header class="logo-bar">
+      <div class="logo">🍃32's Arch1ve🌷</div>
+      <span class="badge">mint mood ✧˖°</span>
+    </header>
 
-  <nav class="nav">
-    <ul class="menu">
-      <li><a href="./index.html">메인</a></li>
-      <li><a href="./기관소개.html">기관소개</a></li>
-      <li><a href="./운영규정.html">운영규정</a></li>
-      <li><a href="./시설안내.html">시설안내</a></li>
-      <li><a href="./오시는길.html">오시는 길</a></li>
-    </ul>
-  </nav>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="MAIN.html">MAIN</a>
+      <a href="MAP.html">MAP</a>
+      <a href="login.html">LOGIN</a>
+    </nav>
 
-  <main class="container">
-    <h1>시설안내</h1>
-    <div class="grid">
+    <main>
+      <h1>🌷 About 32’s Arch1ve 🍃</h1>
+      <p>이 공간은 <strong>박상희</strong>가 만든 개인 기록 아카이브입니다.<br/>
+      매일의 행정, 업무, 공부, 그리고 성장의 흔적들을 하나씩 정리해두는 작은 서랍이에요.</p>
+
       <div class="card">
-        <img src="room1.jpg" alt="실습실 1">
-        <div class="content">실습실 1 (네일/메이크업)</div>
+        <h2>📂 아카이브의 목적</h2>
+        <p>· 내가 만든 자료와 시스템을 스스로 보존하기 위해<br/>
+        · 훈련 행정, 인증평가, 취업률 보고 등 실무 데이터를 체계적으로 관리하기 위해<br/>
+        · 동시에 나의 변화, 사고방식, 아이디어를 기록하기 위해 🍀</p>
       </div>
+
       <div class="card">
-        <img src="room2.jpg" alt="실습실 2">
-        <div class="content">실습실 2 (에스테틱)</div>
+        <h2>🧭 구조와 구성</h2>
+        <p>
+        Arch1ve는 <strong>5개의 주요 섹션</strong>으로 구성되어 있어요.<br/>
+        MAIN – 주요 기록과 업무 정리<br/>
+        INFO – 사이트 소개 및 운영 목적<br/>
+        MAP – 자료 위치 및 링크 모음<br/>
+        LOGIN – 개인 인증 페이지<br/>
+        INDEX – 메인 홈 페이지 🌸
+        </p>
       </div>
+
       <div class="card">
-        <img src="room3.jpg" alt="강의실">
-        <div class="content">강의실 / 이론 수업 공간</div>
+        <h2>💌 운영 방식</h2>
+        <p>
+        모든 자료는 개인 GitHub와 Firebase를 통해 백업 및 보호됩니다.<br/>
+        퇴사나 환경 변화에도 사라지지 않는, <strong>내 노동력의 증거</strong>이자 <strong>기록의 기반</strong>으로 남습니다.
+        </p>
       </div>
-    </div>
-  </main>
 
-  <button id="logoutBtn">로그아웃</button>
+      <div class="card">
+        <h2>🌼 앞으로의 계획</h2>
+        <p>
+        민트와 핑크처럼 부드럽고 따뜻한 마음으로<br/>
+        서류, 기록, 생각을 아카이브해 나갈 예정이에요.<br/>
+        “기록은 나를 지켜주는 가장 확실한 증거” — 그것이 Arch1ve의 중심 철학이에요 🌿
+        </p>
+      </div>
+    </main>
 
-  <!-- 접근 제어 스크립트 -->
-  <script type="module">
-    import "./firebase-init.js";
-    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-    // 로그인 상태 확인
-    onAuthStateChanged(window.auth, (user) => {
-      if (!user) {
-        const back = encodeURIComponent(location.pathname + location.search + location.hash);
-        location.href = `./login.html?next=${back}`;
-      }
-    });
-
-    // 로그아웃 버튼
-    window.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("logoutBtn");
-      if (btn) {
-        btn.addEventListener("click", async () => {
-          await signOut(window.auth);
-          location.href = "./login.html";
-        });
-      }
-    });
-  </script>
+    <footer>
+      © 2025 Sanghee’s Archive. All rights reserved.
+    </footer>
+  </div>
 </body>
 </html>

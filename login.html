@@ -2,128 +2,191 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>로그인 | 132</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🍃32's Arch1ve🌷 | Login</title>
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; max-width: 420px; margin: 40px auto; padding: 0 16px; }
-    h1 { font-size: 22px; margin-bottom: 8px; }
-    p.sub { color:#6b7280; margin-top:0 }
-    form { display: grid; gap: 10px; margin-top: 16px; }
-    input { padding: 10px; font-size: 16px; border: 1px solid #ddd; border-radius: 10px; }
-    button { padding: 10px 14px; font-size: 16px; border: 0; border-radius: 12px; cursor: pointer; }
-    .primary { background: #10b981; color: #fff; }
-    .ghost { background: #f3f4f6; }
-    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .msg { margin-top: 10px; font-size: 14px; color: #ef4444; min-height: 1.2em; white-space: pre-line; }
-    .ok { color: #059669; }
-    .hint { font-size: 12px; color:#6b7280; }
-  </style>
+    :root {
+      --mint: #7BE0B5;
+      --pink: #FFC8DD;
+      --bg: #f8fffc;
+      --text: #2e2e2e;
+    }
 
-  <!-- Firebase 초기화 -->
-  <script type="module" src="./firebase-init.js"></script>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(180deg, #f8fffc 0%, #fffafc 100%);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 30px auto;
+      background: #ffffffcc;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(255, 200, 221, 0.3);
+      overflow: hidden;
+    }
+
+    header.logo-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      background: var(--mint);
+      color: white;
+      font-weight: bold;
+      border-bottom: 3px solid var(--pink);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .logo { font-size: 20px; }
+    .badge {
+      font-size: 14px;
+      background: white;
+      color: var(--mint);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    nav {
+      text-align: center;
+      margin: 20px 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--mint);
+      background: white;
+      border: 2px solid var(--mint);
+      padding: 10px 18px;
+      margin: 5px;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      background: var(--mint);
+      color: white;
+      box-shadow: 0 0 10px var(--pink);
+    }
+
+    main {
+      padding: 50px 20px 70px;
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--mint);
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #555;
+      font-size: 15px;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
+      margin-bottom: 12px;
+      border: 2px solid var(--mint);
+      border-radius: 10px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: var(--pink);
+      box-shadow: 0 0 8px rgba(255, 200, 221, 0.4);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background: var(--mint);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 10px;
+      margin-top: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: var(--pink);
+      box-shadow: 0 0 10px rgba(123,224,181,0.4);
+    }
+
+    .divider {
+      margin: 20px 0;
+      color: #aaa;
+      font-size: 13px;
+      position: relative;
+    }
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      width: 35%;
+      background: #ddd;
+      position: absolute;
+      top: 50%;
+    }
+    .divider::before { left: 0; }
+    .divider::after { right: 0; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #999;
+      border-top: 1px solid #eee;
+      background: #fff;
+      border-radius: 0 0 25px 25px;
+    }
+
+  </style>
 </head>
 <body>
-  <h1>이메일 로그인</h1>
-  <p class="sub">한 번 가입하면 이후엔 같은 이메일/비번으로 로그인하면 돼요.</p>
+  <div class="container">
+    <header class="logo-bar">
+      <div class="logo">🍃32's Arch1ve🌷</div>
+      <span class="badge">mint mood ✧˖°</span>
+    </header>
 
-  <form id="loginForm">
-    <input id="email" type="email" placeholder="이메일" autocomplete="username" required />
-    <input id="pw" type="password" placeholder="비밀번호" autocomplete="current-password" required />
-    <div class="row">
-      <button type="submit" class="primary">로그인</button>
-      <button id="signupBtn" class="ghost" type="button">회원가입</button>
-    </div>
-    <button id="resetBtn" class="ghost" type="button">비밀번호 재설정 메일 보내기</button>
-    <div id="msg" class="msg"></div>
-    <div class="hint">
-      도메인이 허용되지 않았다면 Firebase 콘솔 → Authentication → Settings → Authorized domains에 
-      <b>and-132.github.io</b>를 추가하세요.
-    </div>
-  </form>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="MAIN.html">MAIN</a>
+      <a href="INFO.html">INFO</a>
+      <a href="MAP.html">MAP</a>
+    </nav>
 
-  <script type="module">
-    import {
-      signInWithEmailAndPassword,
-      createUserWithEmailAndPassword,
-      sendPasswordResetEmail,
-      onAuthStateChanged
-    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    <main>
+      <h1>🔐 Login</h1>
+      <p>아카이브 접근을 위한 로그인 페이지입니다.<br/>Firebase 연동 완료 후 기능이 활성화됩니다.</p>
 
-    const form = document.getElementById('loginForm');
-    const email = document.getElementById('email');
-    const pw = document.getElementById('pw');
-    const signupBtn = document.getElementById('signupBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const msg = document.getElementById('msg');
+      <input type="email" id="email" placeholder="이메일 입력" />
+      <input type="password" id="password" placeholder="비밀번호 입력" />
 
-    // Firebase 초기화
-    const params = new URLSearchParams(location.search);
-    const next = params.get('next') || './index.html';
+      <button id="loginBtn">로그인</button>
+      <button id="signupBtn">회원가입</button>
 
-    // 로그인된 상태면 바로 이동
-    onAuthStateChanged(window.auth, (user) => {
-      if (user) {
-        location.replace(next);
-      }
-    });
+      <div class="divider">or</div>
 
-    // 로그인
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      msg.textContent = '';
-      try {
-        await signInWithEmailAndPassword(window.auth, email.value.trim(), pw.value);
-        msg.textContent = '로그인 성공! 이동합니다...';
-        msg.className = 'msg ok';
-        setTimeout(() => location.replace(next), 500);
-      } catch (err) {
-        msg.textContent = prettyError(err);
-        msg.className = 'msg';
-      }
-    });
+      <button id="logoutBtn" style="background:#FFC8DD;">로그아웃</button>
+    </main>
 
-    // 회원가입
-    signupBtn.addEventListener('click', async () => {
-      msg.textContent = '';
-      try {
-        await createUserWithEmailAndPassword(window.auth, email.value.trim(), pw.value);
-        msg.textContent = '회원가입 완료! 자동 로그인됩니다...';
-        msg.className = 'msg ok';
-        setTimeout(() => location.replace(next), 500);
-      } catch (err) {
-        msg.textContent = prettyError(err);
-        msg.className = 'msg';
-      }
-    });
-
-    // 비밀번호 재설정
-    resetBtn.addEventListener('click', async () => {
-      msg.textContent = '';
-      try {
-        await sendPasswordResetEmail(window.auth, email.value.trim());
-        msg.textContent = '재설정 메일을 보냈습니다. 메일함을 확인하세요.';
-        msg.className = 'msg ok';
-      } catch (err) {
-        msg.textContent = prettyError(err);
-        msg.className = 'msg';
-      }
-    });
-
-    // 에러 메시지 정리
-    function prettyError(err) {
-      const code = (err && err.code) || '';
-      switch (code) {
-        case 'auth/invalid-email': return '이메일 형식이 올바르지 않습니다.';
-        case 'auth/missing-password': return '비밀번호를 입력하세요.';
-        case 'auth/weak-password': return '비밀번호가 너무 약합니다 (6자 이상).';
-        case 'auth/email-already-in-use': return '이미 가입된 이메일입니다. 로그인 해주세요.';
-        case 'auth/user-not-found': return '가입되지 않은 이메일입니다.';
-        case 'auth/wrong-password': return '비밀번호가 일치하지 않습니다.';
-        case 'auth/network-request-failed': return '네트워크 오류입니다. 다시 시도해주세요.';
-        case 'auth/too-many-requests': return '잠시 후 다시 시도해주세요 (요청 과다).';
-        default: return (err && err.message) ? err.message : '오류가 발생했습니다.';
-      }
-    }
-  </script>
+    <footer>
+      © 2025 Sanghee’s Archive. All rights reserved.
+    </footer>
+  </div>
 </body>
 </html>
