@@ -106,17 +106,19 @@
       box-shadow: 0 0 8px rgba(255, 200, 221, 0.4);
     }
 
-    /* 🌸 버튼 컨테이너 중앙정렬 */
+    /* 🌸 버튼 컨테이너 중앙정렬 + 폭 확장 */
     .button-container {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       gap: 10px;
       margin-top: 10px;
+      width: 100%;
     }
 
     .button-container button {
-      width: 45%;
+      width: 100%;
+      max-width: 400px;
     }
 
     button {
@@ -180,15 +182,18 @@
       <a href="MAP.html">MAP</a>
     </nav>
 
-     <main>
+    <main>
       <h1>🔐 Login</h1>
       <p>아카이브 접근을 위한 로그인 페이지입니다.<br/>Firebase 연동 완료 후 기능이 활성화됩니다.</p>
 
       <input type="email" id="email" placeholder="이메일 입력" />
       <input type="password" id="password" placeholder="비밀번호 입력" />
 
-      <button id="loginBtn">로그인</button>
-      <button id="signupBtn">회원가입</button>
+      <!-- 🌸 가운데 정렬된 버튼 (폭 넓게 수정됨) -->
+      <div class="button-container">
+        <button id="loginBtn">로그인</button>
+        <button id="signupBtn">회원가입</button>
+      </div>
 
       <div class="divider">or</div>
 
