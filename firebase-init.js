@@ -1,8 +1,8 @@
 // firebase-init.js
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+// 🍃 Firebase 초기 설정 (박상희's Arch1ve용)
 
-// ↓ 여기에 네 Firebase 콘솔에서 복사한 설정을 넣어
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBFHz2dP8iucRWl7KHvyv6I2HlRqHLDjkw",
   authDomain: "and-132-archive.firebaseapp.com",
@@ -13,7 +13,6 @@ const firebaseConfig = {
   measurementId: "G-3FGZQB43Q2"
 };
 
-// Firebase 초기화
-const app = initializeApp(firebaseConfig);
-window.auth = getAuth(app);
-
+// Initialize Firebase App
+export const app = initializeApp(firebaseConfig);
+console.log("🍃 Firebase initialized successfully");
