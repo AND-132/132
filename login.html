@@ -7,75 +7,50 @@
   <style>
     :root {
       --mint: #7BE0B5;
+      --mint-dark: #64caa1;
       --pink: #FFC8DD;
-      --bg: #f8fffc;
+      --pink-dark: #ffb3cf;
       --text: #2e2e2e;
     }
 
     body {
-      margin: 0;
       font-family: 'Segoe UI', system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
       background: linear-gradient(180deg, #f8fffc 0%, #fffafc 100%);
       color: var(--text);
     }
 
     .container {
-      max-width: 850px;
-      margin: 30px auto;
+      width: 100%;
+      max-width: 450px;
       background: #ffffffcc;
       border-radius: 25px;
       box-shadow: 0 4px 15px rgba(255, 200, 221, 0.3);
       overflow: hidden;
+      padding: 30px 25px 40px;
+      box-sizing: border-box;
     }
 
     header.logo-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 24px;
+      text-align: center;
       background: var(--mint);
       color: white;
+      padding: 16px;
       font-weight: bold;
       border-bottom: 3px solid var(--pink);
+      border-radius: 20px 20px 0 0;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    .logo { font-size: 20px; }
-    .badge {
-      font-size: 14px;
-      background: white;
-      color: var(--mint);
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-weight: 500;
-    }
-
-    nav {
-      text-align: center;
-      margin: 20px 0;
-    }
-    nav a {
-      text-decoration: none;
-      color: var(--mint);
-      background: white;
-      border: 2px solid var(--mint);
-      padding: 10px 18px;
-      margin: 5px;
-      border-radius: 25px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      background: var(--mint);
-      color: white;
-      box-shadow: 0 0 10px var(--pink);
+      font-size: 20px;
     }
 
     main {
-      padding: 50px 20px 70px;
-      max-width: 400px;
-      margin: 0 auto;
+      width: 100%;
       text-align: center;
+      margin-top: 20px;
     }
 
     h1 {
@@ -88,72 +63,64 @@
       color: #555;
       font-size: 15px;
       margin-bottom: 25px;
+      line-height: 1.5;
     }
 
-    input {
-      width: 100%;
-      padding: 12px;
-      font-size: 15px;
-      margin-bottom: 12px;
-      border: 2px solid var(--mint);
-      border-radius: 10px;
-      outline: none;
-      transition: 0.3s;
-      text-align: center; /* 🌸 입력 텍스트 중앙 정렬 */
-    }
-
-    input:focus {
-      border-color: var(--pink);
-      box-shadow: 0 0 8px rgba(255, 200, 221, 0.4);
-    }
-
-    /* 🌸 버튼 영역 통합 */
-    .button-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-      width: 100%;
-    }
-
+    input[type="email"],
+    input[type="password"],
     button {
       width: 100%;
       max-width: 400px;
       padding: 12px;
-      border: none;
-      background: var(--mint);
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
+      margin: 10px 0;
       border-radius: 10px;
-      text-align: center;
-      cursor: pointer;
+      border: 2px solid var(--mint);
+      box-sizing: border-box;
+      font-size: 15px;
       transition: 0.3s;
+      text-align: center;
     }
 
-    button:hover {
-      box-shadow: 0 0 10px rgba(123,224,181,0.4);
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: var(--pink);
+      box-shadow: 0 0 8px rgba(255, 200, 221, 0.4);
+      outline: none;
     }
 
-    /* ✅ 로그인/회원가입 버튼: 민트 고정 */
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    /* 💚 로그인/회원가입 버튼 */
     #loginBtn, #signupBtn {
       background: var(--mint);
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
     }
 
     #loginBtn:hover, #signupBtn:hover {
-      background: #64caa1; /* 진한 민트 */
-      box-shadow: 0 0 10px rgba(123,224,181,0.5);
+      background: var(--mint-dark);
+      box-shadow: 0 0 10px rgba(123,224,181,0.4);
     }
 
-    /* ✅ 로그아웃 버튼: 핑크 유지 */
+    /* 💗 로그아웃 버튼 */
     #logoutBtn {
       background: var(--pink);
+      color: var(--text);
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
     }
 
     #logoutBtn:hover {
-      background: #ffb3cf; /* 진한 핑크 */
-      box-shadow: 0 0 10px rgba(255, 200, 221, 0.5);
+      background: var(--pink-dark);
+      box-shadow: 0 0 10px rgba(255,200,221,0.4);
     }
 
     .divider {
@@ -162,6 +129,7 @@
       font-size: 13px;
       position: relative;
     }
+
     .divider::before,
     .divider::after {
       content: "";
@@ -171,34 +139,22 @@
       position: absolute;
       top: 50%;
     }
+
     .divider::before { left: 0; }
     .divider::after { right: 0; }
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 20px 10px 0;
       font-size: 13px;
       color: #999;
-      border-top: 1px solid #eee;
-      background: #fff;
-      border-radius: 0 0 25px 25px;
     }
-
   </style>
 </head>
+
 <body>
   <div class="container">
-    <header class="logo-bar">
-      <div class="logo">🍃32's Arch1ve🌷</div>
-      <span class="badge">mint mood ✧˖°</span>
-    </header>
-
-    <nav>
-      <a href="index.html">HOME</a>
-      <a href="MAIN.html">MAIN</a>
-      <a href="INFO.html">INFO</a>
-      <a href="MAP.html">MAP</a>
-    </nav>
+    <header class="logo-bar">🍃32's Arch1ve🌷</header>
 
     <main>
       <h1>🔐 Login</h1>
