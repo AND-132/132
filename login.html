@@ -7,6 +7,7 @@
   <style>
     :root {
       --mint: #7BE0B5;
+      --mint-dark: #0A6B5A;
       --pink: #FFC8DD;
       --bg: #f8fffc;
       --text: #2e2e2e;
@@ -44,7 +45,7 @@
     .badge {
       font-size: 14px;
       background: white;
-      color: var(--mint);
+      color: var(--mint-dark);
       padding: 4px 10px;
       border-radius: 20px;
       font-weight: 500;
@@ -56,7 +57,7 @@
     }
     nav a {
       text-decoration: none;
-      color: var(--mint);
+      color: var(--mint-dark);
       background: white;
       border: 2px solid var(--mint);
       padding: 10px 18px;
@@ -79,7 +80,7 @@
     }
 
     h1 {
-      color: var(--mint);
+      color: var(--mint-dark);
       font-size: 26px;
       margin-bottom: 15px;
     }
@@ -99,7 +100,7 @@
       border-radius: 10px;
       outline: none;
       transition: 0.3s;
-      text-align: center; /* 🌸 입력 텍스트 중앙 정렬 */
+      text-align: center;
     }
 
     input:focus {
@@ -107,7 +108,7 @@
       box-shadow: 0 0 8px rgba(255, 200, 221, 0.4);
     }
 
-    /* 🌸 버튼 영역 통합 */
+    /* 🌿 버튼 스타일 */
     .button-container {
       display: flex;
       flex-direction: column;
@@ -134,11 +135,18 @@
 
     button:hover {
       background: var(--pink);
+      color: var(--mint-dark);
       box-shadow: 0 0 10px rgba(123,224,181,0.4);
     }
 
     #logoutBtn {
       background: var(--pink);
+      color: var(--mint-dark);
+    }
+
+    #logoutBtn:hover {
+      background: var(--mint);
+      color: white;
     }
 
     .divider {
@@ -186,75 +194,27 @@
     </nav>
 
     <main>
-  <h1>🔐 Login</h1>
-  <p>아카이브 접근을 위한 로그인 페이지입니다.<br/>Firebase 연동 완료 후 기능이 활성화됩니다.</p>
+      <h1>🔐 Login</h1>
+      <p>아카이브 접근을 위한 로그인 페이지입니다.<br/>Firebase 연동 완료 후 기능이 활성화됩니다.</p>
 
-  <input type="email" id="email" placeholder="이메일 입력" />
-  <input type="password" id="password" placeholder="비밀번호 입력" />
+      <input type="email" id="email" placeholder="이메일 입력" />
+      <input type="password" id="password" placeholder="비밀번호 입력" />
 
-  <div class="button-container">
-    <button id="loginBtn">로그인</button>
-    <button id="signupBtn">회원가입</button>
+      <div class="button-container">
+        <button id="loginBtn">로그인</button>
+        <button id="signupBtn">회원가입</button>
+      </div>
+
+      <div class="divider">or</div>
+
+      <div class="button-container">
+        <button id="logoutBtn">로그아웃</button>
+      </div>
+    </main>
+
+    <footer>
+      © 32's Arch1ve | all rights reserved
+    </footer>
   </div>
-
-  <div class="divider">or</div>
-
-  <div class="button-container">
-    <button id="logoutBtn">로그아웃</button>
-  </div>
-</main>
-
-<style>
-  /* 기본적인 스타일 설정 */
-  body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-
-  main {
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-  }
-
-  input[type="email"], input[type="password"], button {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-
-  /* 버튼들이 세로로 정렬되도록 설정 */
-  .button-container {
-    display: flex;
-    flex-direction: column; /* 버튼들이 세로로 쌓이게 */
-    gap: 10px; /* 버튼 간격 */
-  }
-
-  .divider {
-    margin: 20px 0;
-    color: #888;
-  }
-
-  button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #45a049;
-  }
-
-  /* 버튼 크기 통일 */
-  #loginBtn, #signupBtn, #logoutBtn {
-    width: 100%;
-  }
-</style>
+</body>
+</html>
